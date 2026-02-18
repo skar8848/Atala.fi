@@ -62,17 +62,22 @@ contract AtalaAgentTest is Test {
     // ============ Rebalance Tests ============
 
     function test_agentCanRebalance() public {
-        uint256 idle = vault.idle();
+        // Pull some funds from vault1 to idle, then push to vault2
+        uint256 v1Before = evkVault1.convertToAssets(evkVault1.balanceOf(address(vault)));
+        uint256 moveAmount = v1Before / 4;
 
-        // Allocate idle to vault2
-        AtalaVault.Allocation[] memory allocs = new AtalaVault.Allocation[](1);
-        allocs[0] = AtalaVault.Allocation({vault: address(evkVault2), delta: int256(idle > VAULT2_CAP ? VAULT2_CAP : idle)});
+        AtalaVault.Allocation[] memory allocs = new AtalaVault.Allocation[](2);
+        allocs[0] = AtalaVault.Allocation({vault: address(evkVault1), delta: -int256(moveAmount)});
+        allocs[1] = AtalaVault.Allocation({vault: address(evkVault2), delta: int256(moveAmount)});
 
         vm.prank(keeper);
         agent.rebalance(address(vault), allocs);
 
-        uint256 newIdle = vault.idle();
-        assertLt(newIdle, idle, "Idle should decrease after rebalance");
+        uint256 v1After = evkVault1.convertToAssets(evkVault1.balanceOf(address(vault)));
+        uint256 v2After = evkVault2.convertToAssets(evkVault2.balanceOf(address(vault)));
+
+        assertLt(v1After, v1Before, "Vault1 should decrease");
+        assertGt(v2After, 0, "Vault2 should increase");
     }
 
     function test_keeperCanRebalance() public {
@@ -138,7 +143,7 @@ contract AtalaAgentTest is Test {
         }
     }
 
-    function test_checkRebalanceNeeded_unmanagedVault() public view {
+    function test_checkRebalanceNeeded_unmanagedVault() public {
         (bool needed, uint256 idleRatio) = agent.checkRebalanceNeeded(makeAddr("random"));
         assertFalse(needed);
         assertEq(idleRatio, 0);

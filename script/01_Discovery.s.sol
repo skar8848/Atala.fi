@@ -77,7 +77,7 @@ contract Discovery is Script {
                     console2.log(label, symbol, "decimals:", decimals);
                     console2.log("  totalSupply:", supply);
                 } catch {
-                    console2.log(label, symbol, "decimals:", decimals, "(supply read failed)");
+                    console2.log(label, symbol, "(supply read failed)");
                 }
             } catch {
                 console2.log(label, symbol, "(decimals read failed)");

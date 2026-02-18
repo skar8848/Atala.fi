@@ -18,10 +18,10 @@ library Addresses {
     address constant VAULT_LENS = 0x1521C9DCA248ceE906943096a5B13Fc657A020C3;
 
     /// @notice Oracle Router - routes price queries to correct oracle
-    address constant ORACLE_ROUTER = 0x1943cEDE57aDD0A35F43a95FF2cB5b5e0e94E1C8;
+    address constant ORACLE_ROUTER = 0x1943CeDE57adD0A35f43a95ff2Cb5b5e0e94e1C8;
 
     /// @notice Swap Verifier - validates swap data for liquidations
-    address constant SWAP_VERIFIER = 0x2547B8E25c839E5B9037c224bb4F638750cA0418;
+    address constant SWAP_VERIFIER = 0x2547b8E25c839E5B9037C224bb4F638750ca0418;
 
     // ============ Tokens ============
 
