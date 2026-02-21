@@ -27,10 +27,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
+        <div
+          id="page-cover"
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "#ffffff",
+            zIndex: 99999,
+            transition: "opacity 0.4s ease",
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.addEventListener('load',function(){var c=document.getElementById('page-cover');if(c){c.style.opacity='0';setTimeout(function(){c.remove()},500)}})`,
+          }}
+        />
         <Providers>
           {children}
           <Toaster />
