@@ -156,7 +156,7 @@ export default function PortfolioPage() {
                       className="border-border/30"
                     >
                       <TableCell>
-                        <
+                        <a
                           href={`/markets/${pos.vaultAddress}`}
                           className="hover:underline"
                         >
@@ -230,7 +230,7 @@ export default function PortfolioPage() {
                       className="border-border/30"
                     >
                       <TableCell>
-                        <
+                        <a
                           href={`/markets/${pos.vaultAddress}`}
                           className="hover:underline"
                         >
