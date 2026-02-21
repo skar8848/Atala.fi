@@ -19,7 +19,6 @@ import {
   atalaFactoryAbi,
   type CreationAsset,
 } from "@/config/atala";
-import Link from "next/link";
 
 type Step = 1 | 2 | 3;
 
@@ -171,15 +170,15 @@ export default function CreateVaultPage() {
             </a>
             <div className="flex gap-3 pt-2">
               <Button variant="outline" asChild>
-                <Link href="/build">Back to Build</Link>
+                <a href="/build">Back to Build</a>
               </Button>
               <Button
                 className="bg-cyan-500 hover:bg-cyan-600 text-white"
                 asChild
               >
-                <Link href={`/build/${newVaultAddress}`}>
+                <a href={`/build/${newVaultAddress}`}>
                   Manage Vault
-                </Link>
+                </a>
               </Button>
             </div>
           </CardContent>
@@ -233,14 +232,14 @@ export default function CreateVaultPage() {
     <div className="space-y-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Link
+        <a
           href="/build"
           className="flex items-center justify-center h-8 w-8 rounded-lg border border-border/40 hover:bg-muted transition-colors"
         >
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M10 3L5 8l5 5" />
           </svg>
-        </Link>
+        </a>
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Create Vault</h1>
           <p className="text-sm text-muted-foreground mt-1">

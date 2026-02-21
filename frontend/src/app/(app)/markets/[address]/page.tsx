@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import { useReadContracts } from "wagmi";
 import { evkVaultAbi } from "@/config/abis";
 import { getTokenByAddress, EULER_ADDRESSES } from "@/config/contracts";
@@ -84,9 +83,9 @@ export default function VaultDetailPage() {
     <div className="space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <Link href="/markets" className="hover:text-foreground transition-colors">
+        <a href="/markets" className="hover:text-foreground transition-colors">
           Markets
-        </Link>
+        </a>
         <span>/</span>
         <span className="text-foreground">{name}</span>
       </div>

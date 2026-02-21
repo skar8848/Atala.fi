@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSwitchChain } from "wagmi";
@@ -112,7 +111,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/markets" className="flex items-center gap-2">
+        <a href="/markets" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500">
             <span className="text-sm font-bold text-white">A</span>
           </div>
@@ -120,12 +119,12 @@ export function Header() {
           <span className="rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs text-cyan-400">
             Beta
           </span>
-        </Link>
+        </a>
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
               className={cn(
@@ -136,7 +135,7 @@ export function Header() {
               )}
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
