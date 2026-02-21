@@ -15,6 +15,7 @@ import { SubVaultList } from "@/components/build/SubVaultList";
 import { AddSubVaultDrawer } from "@/components/build/AddSubVaultDrawer";
 import { RoleManager } from "@/components/build/RoleManager";
 import { RebalanceForm } from "@/components/build/RebalanceForm";
+import Link from "next/link";
 import { TokenIcon } from "@/components/markets/VaultTable";
 import { formatTokenAmount, formatIdleRatio, shortenAddress } from "@/lib/format";
 
@@ -98,9 +99,9 @@ export default function VaultManagementPage() {
             <p className="text-sm text-muted-foreground">
               Vault not found or unable to read contract data
             </p>
-            <a href="/build" className="text-cyan-400 hover:underline text-sm">
+            <Link href="/build" className="text-cyan-400 hover:underline text-sm">
               Back to Build
-            </a>
+            </Link>
           </CardContent>
         </Card>
       </div>
@@ -119,14 +120,14 @@ export default function VaultManagementPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start gap-3">
-        <a
+        <Link
           href="/build"
           className="flex items-center justify-center h-8 w-8 rounded-lg border border-border/40 hover:bg-muted transition-colors mt-1"
         >
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M10 3L5 8l5 5" />
           </svg>
-        </a>
+        </Link>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-semibold tracking-tight truncate">

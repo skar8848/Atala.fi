@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Spinner } from "@/components/ui/spinner";
+import Link from "next/link";
 import { TokenIcon } from "@/components/markets/VaultTable";
 import { formatTokenAmount, formatPercent, shortenAddress } from "@/lib/format";
 
@@ -136,9 +137,9 @@ export default function PortfolioPage() {
           ) : supplyPositions.length === 0 ? (
             <p className="text-sm text-muted-foreground py-8 text-center">
               No supply positions found.{" "}
-              <a href="/markets" className="text-cyan-400 hover:underline">
+              <Link href="/markets" className="text-cyan-400 hover:underline">
                 Explore markets
-              </a>
+              </Link>
             </p>
           ) : (
             <div className="rounded-lg border border-border/30 overflow-hidden">
@@ -157,7 +158,7 @@ export default function PortfolioPage() {
                       className="border-border/30"
                     >
                       <TableCell>
-                        <a
+                        <Link
                           href={`/markets/${pos.vaultAddress}`}
                           className="hover:underline"
                         >
@@ -180,7 +181,7 @@ export default function PortfolioPage() {
                               </div>
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </TableCell>
                       <TableCell className="text-right font-mono text-sm">
                         {formatTokenAmount(pos.shares, pos.assetDecimals)}
@@ -231,7 +232,7 @@ export default function PortfolioPage() {
                       className="border-border/30"
                     >
                       <TableCell>
-                        <a
+                        <Link
                           href={`/markets/${pos.vaultAddress}`}
                           className="hover:underline"
                         >
@@ -249,7 +250,7 @@ export default function PortfolioPage() {
                               </Badge>
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </TableCell>
                       <TableCell className="text-right font-mono text-sm">
                         {formatTokenAmount(pos.debt, pos.assetDecimals)}

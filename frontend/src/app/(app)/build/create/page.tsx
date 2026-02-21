@@ -14,6 +14,7 @@ import { TokenIcon } from "@/components/markets/VaultTable";
 import { useAtalaWrite } from "@/hooks/useAtalaWrite";
 import { useDeployFactory } from "@/hooks/useDeployFactory";
 import { useFactoryAddress, saveFactoryAddress } from "@/hooks/useFactoryAddress";
+import Link from "next/link";
 import {
   VAULT_CREATION_ASSETS,
   atalaFactoryAbi,
@@ -170,15 +171,15 @@ export default function CreateVaultPage() {
             </a>
             <div className="flex gap-3 pt-2">
               <Button variant="outline" asChild>
-                <a href="/build">Back to Build</a>
+                <Link href="/build">Back to Build</Link>
               </Button>
               <Button
                 className="bg-cyan-500 hover:bg-cyan-600 text-white"
                 asChild
               >
-                <a href={`/build/${newVaultAddress}`}>
+                <Link href={`/build/${newVaultAddress}`}>
                   Manage Vault
-                </a>
+                </Link>
               </Button>
             </div>
           </CardContent>
@@ -232,14 +233,14 @@ export default function CreateVaultPage() {
     <div className="space-y-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <a
+        <Link
           href="/build"
           className="flex items-center justify-center h-8 w-8 rounded-lg border border-border/40 hover:bg-muted transition-colors"
         >
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M10 3L5 8l5 5" />
           </svg>
-        </a>
+        </Link>
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Create Vault</h1>
           <p className="text-sm text-muted-foreground mt-1">

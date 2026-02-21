@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
+import Link from "next/link";
 import { TokenIcon } from "@/components/markets/VaultTable";
 import {
   HoverCard,
@@ -83,9 +84,9 @@ export default function VaultDetailPage() {
     <div className="space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <a href="/markets" className="hover:text-foreground transition-colors">
+        <Link href="/markets" className="hover:text-foreground transition-colors">
           Markets
-        </a>
+        </Link>
         <span>/</span>
         <span className="text-foreground">{name}</span>
       </div>

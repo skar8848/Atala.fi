@@ -6,6 +6,7 @@ import { useAtalaVaults } from "@/hooks/useAtalaVaults";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Spinner } from "@/components/ui/spinner";
+import Link from "next/link";
 import { TokenIcon } from "@/components/markets/VaultTable";
 import { formatTokenAmount, shortenAddress, formatIdleRatio } from "@/lib/format";
 
@@ -43,7 +44,7 @@ export default function BuildPage() {
             Create and manage your own yield aggregation vaults
           </p>
         </div>
-        <a
+        <Link
           href="/build/create"
           className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition-colors"
         >
@@ -51,7 +52,7 @@ export default function BuildPage() {
             <path d="M8 3v10M3 8h10" />
           </svg>
           Create Vault
-        </a>
+        </Link>
       </div>
 
       {isLoading ? (
@@ -74,18 +75,18 @@ export default function BuildPage() {
                 Deploy your first vault to aggregate yield across Euler V2 and Silo V2 markets
               </p>
             </div>
-            <a
+            <Link
               href="/build/create"
               className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition-colors"
             >
               Create Your First Vault
-            </a>
+            </Link>
           </CardContent>
         </Card>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {vaults.map((vault) => (
-            <a key={vault.address} href={`/build/${vault.address}`}>
+            <Link key={vault.address} href={`/build/${vault.address}`}>
               <Card className="border-border/40 bg-card/50 hover:border-border/60 hover:bg-card/70 transition-all cursor-pointer h-full">
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
@@ -128,7 +129,7 @@ export default function BuildPage() {
                   </div>
                 </CardContent>
               </Card>
-            </a>
+            </Link>
           ))}
         </div>
       )}

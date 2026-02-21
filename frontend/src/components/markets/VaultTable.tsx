@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -325,13 +326,13 @@ export function VaultTable({ markets, isLoading }: VaultTableProps) {
               >
                 <TableCell>
                   <div className="flex items-center gap-3">
-                    <a href={href}>
+                    <Link href={href}>
                       <TokenIcon symbol={market.asset} />
-                    </a>
+                    </Link>
                     <div>
-                      <a href={href} className="font-medium text-sm leading-tight hover:underline">
+                      <Link href={href} className="font-medium text-sm leading-tight hover:underline">
                         {market.name}
-                      </a>
+                      </Link>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <ProtocolBadge protocol={market.protocol} />
                         <Badge
