@@ -458,15 +458,16 @@ export default function LandingPage() {
         .meta-layout {
           display: flex;
           width: 100%;
-          max-width: 1200px;
-          padding: 0 5%;
+          max-width: 1400px;
+          padding: 0 3% 0 5%;
           align-items: center;
-          gap: 4rem;
+          gap: 3rem;
         }
 
         .meta-text {
-          flex: 1;
+          flex: 1.3;
           z-index: 10;
+          padding-right: 2rem;
         }
 
         .meta-text h2 {
@@ -476,7 +477,7 @@ export default function LandingPage() {
         }
 
         .meta-text p {
-          font-size: clamp(1rem, 1.5vw, 1.2rem);
+          font-size: clamp(1.05rem, 1.7vw, 1.35rem);
           line-height: 1.7;
           color: var(--ink);
           opacity: 0.85;
@@ -709,7 +710,7 @@ export default function LandingPage() {
         <div className="hero-overlay" id="hero-overlay">
           <div className="hero-title" id="hero-title">ATALA</div>
           <div className="hero-tagline" id="hero-tagline">
-            DeFi Lending, Reimagined
+            Your Lending. Your Terms.
           </div>
           <div className="scroll-hint" id="scroll-hint">
             <span>Scroll</span>
@@ -746,12 +747,12 @@ export default function LandingPage() {
       <section id="section-metamorphosis" className="landing-section">
         <div className="meta-layout">
           <div className="meta-text">
-            <h2 className="title-font">Efficience Primitive</h2>
+            <h2 className="title-font">DeFi Lending, Reimagined</h2>
             <p>
-              Atala repose sur une infrastructure immuable. Pas de gouvernance
-              superflue — seulement la puret&eacute; du code pour une
-              s&eacute;curit&eacute; absolue. Un hub unifie qui agr&egrave;ge
-              les meilleurs march&eacute;s de lending sur Avalanche.
+              Explore and compare the best lending markets on Avalanche
+              from a single interface. No middlemen. No risk managers.
+              <br />
+              Direct access to over a hundred markets with real-time on-chain data.
             </p>
           </div>
 
@@ -788,15 +789,16 @@ export default function LandingPage() {
         </div>
 
         <div className="creation-content">
-          <h2 className="title-font">La Curation Humaine</h2>
+          <h2 className="title-font">Build Your Own Vault</h2>
           <p>
-            L&apos;expertise rencontre l&apos;automatisation. Les coffres Atala
-            permettent aux gestionnaires de risques d&apos;allouer vos actifs
-            vers les march&eacute;s les plus efficients — Euler V2, Silo V2 —
-            garantissant un rendement optimis&eacute; sans compromis.
+            Create customizable lending strategies tailored to your needs.
+            Deploy your own vault, set your risk parameters, allocate across
+            Silo V2 and Euler V2 markets.
+            <br /><br />
+            Your assets, your rules.
           </p>
           <Link href="/markets" className="btn-launch">
-            Lancer l&apos;App
+            Launch App
           </Link>
         </div>
       </section>
