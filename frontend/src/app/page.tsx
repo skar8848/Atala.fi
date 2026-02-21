@@ -757,7 +757,7 @@ export default function LandingPage() {
             <img className="sumi-bg" src="/vectors/mountain_blossom.png" alt="" />
 
             {/* Vectors on top — positioned as % of 827x628 */}
-            <InlineSvg id="sun-svg" className="svg-element" src="/vectors/sun.svg" />
+            <InlineSvg id="sun-svg" className="svg-element" src="/vectors/carre.svg" />
             <InlineSvg id="blossom-1" className="svg-element" src="/vectors/blossom_1.svg" />
             <InlineSvg id="blossom-2" className="svg-element" src="/vectors/blossom_2.svg" />
             <InlineSvg id="blossom-3" className="svg-element" src="/vectors/blossom_3.svg" />
