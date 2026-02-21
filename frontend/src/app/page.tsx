@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -703,7 +702,7 @@ export default function LandingPage() {
         {/* Landing nav bar */}
         <nav className="landing-nav" id="landing-nav">
           <a href="#" className="nav-docs">Docs</a>
-          <Link href="/markets" className="btn-launch-nav">Launch App</Link>
+          <a href="/markets" className="btn-launch-nav">Launch App</a>
         </nav>
 
         {/* Title overlay — starts full page, shrinks on scroll */}
@@ -797,9 +796,9 @@ export default function LandingPage() {
             <br /><br />
             Your assets, your rules.
           </p>
-          <Link href="/markets" className="btn-launch">
+          <a href="/markets" className="btn-launch">
             Launch App
-          </Link>
+          </a>
         </div>
       </section>
     </div>
