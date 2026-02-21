@@ -270,6 +270,8 @@ export default function LandingPage() {
           text-decoration: none;
           opacity: 0.7;
           transition: opacity 0.3s ease;
+          position: relative;
+          cursor: default;
         }
 
         .nav-docs:hover {
@@ -277,6 +279,28 @@ export default function LandingPage() {
           text-decoration: underline;
           text-decoration-color: var(--red);
           text-underline-offset: 4px;
+        }
+
+        .nav-docs .tooltip {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-top: 0.5rem;
+          font-family: "Cormorant Garamond", serif;
+          font-size: 0.75rem;
+          font-style: italic;
+          letter-spacing: 0.02em;
+          text-transform: none;
+          color: var(--red);
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .nav-docs:hover .tooltip {
+          opacity: 1;
         }
 
         .btn-launch-nav {
@@ -701,7 +725,7 @@ export default function LandingPage() {
       <section id="section-hero" className="landing-section">
         {/* Landing nav bar */}
         <nav className="landing-nav" id="landing-nav">
-          <a href="#" className="nav-docs">Docs</a>
+          <span className="nav-docs">Docs<span className="tooltip">Coming soon!</span></span>
           <a href="/markets" className="btn-launch-nav">Launch App</a>
         </nav>
 
