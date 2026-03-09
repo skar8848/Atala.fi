@@ -7,11 +7,19 @@ import { ATALA_FACTORY_ADDRESS } from "@/config/atala";
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 const LS_KEY = "atala_factory_address";
 
+function canUseLocalStorage(): boolean {
+  try {
+    return typeof window !== "undefined" && typeof window.localStorage?.getItem === "function";
+  } catch {
+    return false;
+  }
+}
+
 /** Read factory address from localStorage for a given chain */
 function getSavedFactory(chainId: number): `0x${string}` | null {
-  if (typeof window === "undefined") return null;
+  if (!canUseLocalStorage()) return null;
   try {
-    const saved = JSON.parse(localStorage.getItem(LS_KEY) ?? "{}");
+    const saved = JSON.parse(window.localStorage.getItem(LS_KEY) ?? "{}");
     const addr = saved[String(chainId)];
     return addr && addr !== ZERO_ADDRESS ? addr : null;
   } catch {
@@ -21,11 +29,11 @@ function getSavedFactory(chainId: number): `0x${string}` | null {
 
 /** Save factory address to localStorage for a given chain */
 export function saveFactoryAddress(chainId: number, address: string) {
-  if (typeof window === "undefined") return;
+  if (!canUseLocalStorage()) return;
   try {
-    const saved = JSON.parse(localStorage.getItem(LS_KEY) ?? "{}");
+    const saved = JSON.parse(window.localStorage.getItem(LS_KEY) ?? "{}");
     saved[String(chainId)] = address;
-    localStorage.setItem(LS_KEY, JSON.stringify(saved));
+    window.localStorage.setItem(LS_KEY, JSON.stringify(saved));
   } catch {
     // ignore
   }
