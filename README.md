@@ -1,6 +1,6 @@
 # Atala.fi
 
-Unified lending hub on Avalanche C-Chain. Inspired by [MonarchLend](https://monarchlend.com), Atala aggregates lending markets from Euler V2 and Silo V2 into a single interface — compare yields, manage positions, and deploy automated vault strategies across protocols.
+Unified lending hub on Avalanche C-Chain. Inspired by [MonarchLend](https://www.monarchlend.xyz/), Atala aggregates lending markets from Euler V2 and Silo V2 into a single interface — compare yields, manage positions, and deploy automated vault strategies across protocols.
 
 Morpho Blue is deployed on Avalanche but has no active markets yet. Euler V2 (61 vaults) and Silo V2 (37 isolated markets) are the two live protocols integrated.
 
