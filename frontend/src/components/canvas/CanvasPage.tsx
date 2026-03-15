@@ -316,10 +316,9 @@ export default function CanvasPage() {
       const type = event.dataTransfer.getData("application/atala-node");
       if (!type || !reactFlowInstance.current || !reactFlowWrapper.current) return;
 
-      const bounds = reactFlowWrapper.current.getBoundingClientRect();
       const position = reactFlowInstance.current.screenToFlowPosition({
-        x: event.clientX - bounds.left,
-        y: event.clientY - bounds.top,
+        x: event.clientX,
+        y: event.clientY,
       });
 
       if (type.startsWith("position:")) return;
@@ -526,72 +525,12 @@ export default function CanvasPage() {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onNodeDragStop = useCallback((_event: any, draggedNode: any) => {
+  const onNodeDragStop = useCallback((_event: any, _draggedNode: any) => {
     isDragging.current = false;
-    if (!dragStartPos.current) return;
-    const startPos = dragStartPos.current;
     dragStartPos.current = null;
+  }, []);
 
-    const draggedRect = getNodeRect(draggedNode.id, draggedNode.position);
-    const overlaps = nodes.some((n) => {
-      if (n.id === draggedNode.id) return false;
-      const otherRect = getNodeRect(n.id, n.position);
-      return rectsOverlap(draggedRect, otherRect);
-    });
-
-    if (overlaps) {
-      setNodes((nds) =>
-        nds.map((n) =>
-          n.id === draggedNode.id
-            ? { ...n, position: startPos }
-            : n
-        )
-      );
-    }
-  }, [nodes, setNodes, getNodeRect]);
-
-  // Watch for node resizes -- push overlapping neighbors apart
-  const resizeDebounce = useRef<NodeJS.Timeout | null>(null);
-  useEffect(() => {
-    const container = reactFlowWrapper.current;
-    if (!container) return;
-
-    const observer = new ResizeObserver(() => {
-      if (isDragging.current || isOrganizing.current) return;
-      if (resizeDebounce.current) clearTimeout(resizeDebounce.current);
-      resizeDebounce.current = setTimeout(() => {
-        if (isDragging.current || isOrganizing.current) return;
-        setNodes((nds) => {
-          const rects = nds.map((n) => ({ id: n.id, ...getNodeRect(n.id, n.position) }));
-          let changed = false;
-          const updated = nds.map((n) => ({ ...n, position: { ...n.position } }));
-
-          for (let i = 0; i < rects.length; i++) {
-            for (let j = i + 1; j < rects.length; j++) {
-              const a = rects[i];
-              const b = rects[j];
-              if (rectsOverlap(a, b)) {
-                const pushIdx = a.x <= b.x ? j : i;
-                const stayIdx = a.x <= b.x ? i : j;
-                const stay = rects[stayIdx];
-                const push = rects[pushIdx];
-                const newX = stay.x + stay.w + GAP;
-                updated[pushIdx].position.x = newX;
-                rects[pushIdx].x = newX;
-                changed = true;
-              }
-            }
-          }
-          return changed ? updated : nds;
-        });
-      }, 200);
-    });
-
-    const nodeEls = container.querySelectorAll(".react-flow__node");
-    nodeEls.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  });
+  // (overlap push-apart removed — let users freely place nodes)
 
   // Wrap onNodesChange to snapshot before deletions from React Flow (X button)
   const handleNodesChange: typeof onNodesChange = useCallback(

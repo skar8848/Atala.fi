@@ -122,3 +122,82 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---- React Flow canvas overrides ---- */
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.25s ease-out;
+}
+
+.canvas-flow .react-flow__pane {
+  cursor: grab;
+}
+.canvas-flow .react-flow__pane:active {
+  cursor: grabbing;
+}
+.canvas-flow .react-flow__node {
+  cursor: default;
+}
+.canvas-flow .react-flow__node.selected {
+  outline: none;
+}
+.canvas-flow .react-flow__handle {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.canvas-flow .react-flow__handle:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 8px #55c3e9;
+}
+.canvas-flow .react-flow__edge-path {
+  stroke: #55c3e9;
+  stroke-width: 2;
+}
+.canvas-flow .react-flow__connection-line {
+  stroke: #55c3e9;
+  stroke-width: 2;
+  stroke-dasharray: 6 3;
+}
+.canvas-flow .react-flow__controls {
+  border-color: rgba(255,255,255,0.08) !important;
+  background: #0c1218 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important;
+}
+.canvas-flow .react-flow__controls-button {
+  background: #0c1218 !important;
+  border-color: rgba(255,255,255,0.08) !important;
+  fill: #8898a8 !important;
+}
+.canvas-flow .react-flow__controls-button:hover {
+  background: #0a121c !important;
+  fill: #ffffff !important;
+}
+.canvas-flow .react-flow__minimap {
+  background: #0c1218 !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+.canvas-flow .react-flow__minimap-mask {
+  fill: rgba(10,18,28,0.7) !important;
+}
+.canvas-flow .react-flow__attribution {
+  display: none;
+}
+.canvas-flow .react-flow__background {
+  background: #0a121c !important;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
