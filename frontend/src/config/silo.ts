@@ -102,8 +102,22 @@ export const siloConfigAbi = [
   },
 ] as const;
 
-// ISilo - direct reads on each silo vault
+// ISilo - direct reads on each silo vault (ERC-4626 compatible)
 export const siloAbi = [
+  {
+    inputs: [{ name: "account", type: "address" }],
+    name: "balanceOf",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "account", type: "address" }],
+    name: "maxRepay",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
   {
     inputs: [],
     name: "asset",

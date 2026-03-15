@@ -209,11 +209,12 @@ const SORT_COLUMNS: { key: SortKey; label: string }[] = [
 ];
 
 function getSortValue(market: UnifiedMarket, key: SortKey): number {
+  const decimals = market.assetDecimals || 18;
   switch (key) {
     case "totalSupply":
-      return Number(market.totalSupply);
+      return Number(market.totalSupply) / 10 ** decimals;
     case "totalBorrows":
-      return Number(market.totalBorrows);
+      return Number(market.totalBorrows) / 10 ** decimals;
     case "supplyAPY":
       return market.supplyAPY;
     case "borrowAPY":
