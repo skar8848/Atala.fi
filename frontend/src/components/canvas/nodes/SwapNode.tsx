@@ -58,12 +58,12 @@ function SwapNodeComponent({ id, data }: NodeProps) {
     const sd = sourceNode.data as Record<string, unknown>;
 
     if (sd.type === "eulerBorrow" || sd.type === "siloBorrow") {
-      const vault = sd.vault as { asset?: TokenInfo } | null;
+      const borrowVault = sd.borrowVault as { asset?: TokenInfo } | null;
       const pair = sd.pair as { token0?: TokenInfo; token1?: TokenInfo } | null;
       const side = sd.side as 0 | 1 | undefined;
       const amt = (sd.borrowAmount as number) ?? 0;
       let token: TokenInfo | null = null;
-      if (sd.type === "eulerBorrow") token = vault?.asset ?? null;
+      if (sd.type === "eulerBorrow") token = borrowVault?.asset ?? null;
       else if (pair) token = (side ?? 0) === 0 ? pair.token0 ?? null : pair.token1 ?? null;
       return { upstreamAsset: token, upstreamAmount: amt };
     }

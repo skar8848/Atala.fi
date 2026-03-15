@@ -55,19 +55,19 @@ export function getConnectionHint(
   const targetType = (targetNode.data as { type?: string }).type;
   if (!sourceType || !targetType) return null;
 
-  // Wallet -> Borrow: need to deposit first
-  if (sourceType === "wallet" && (targetType === "eulerBorrow" || targetType === "siloBorrow")) {
+  // Wallet -> Silo Borrow: need to deposit first (Euler Borrow is now standalone)
+  if (sourceType === "wallet" && targetType === "siloBorrow") {
     return {
       message: "You need to deposit collateral first",
-      highlightType: targetType === "eulerBorrow" ? "eulerDeposit" : "siloDeposit",
+      highlightType: "siloDeposit",
     };
   }
 
-  // Swap -> Borrow: need to deposit first
-  if (sourceType === "swap" && (targetType === "eulerBorrow" || targetType === "siloBorrow")) {
+  // Swap -> Borrow: need to deposit first (Silo only; Euler Borrow is standalone)
+  if (sourceType === "swap" && targetType === "siloBorrow") {
     return {
       message: "Deposit the swapped tokens as collateral first",
-      highlightType: targetType === "eulerBorrow" ? "eulerDeposit" : "siloDeposit",
+      highlightType: "siloDeposit",
     };
   }
 
@@ -164,18 +164,23 @@ export function validateGraph(
 
       case "eulerBorrow": {
         const d = node.data as {
-          vault?: { address?: string; asset?: { decimals?: number } };
-          collateralVault?: { address?: string };
+          collateralVault?: { address?: string; asset?: { decimals?: number } };
+          collateralAmount?: string;
+          borrowVault?: { address?: string; asset?: { decimals?: number } };
           borrowAmount?: number;
         };
-        if (!d.vault) {
-          errors.push("Euler Borrow: no vault selected");
-        } else {
-          if (!isValidAddr(d.vault.address)) errors.push("Euler Borrow: invalid vault address");
-          if (!isValidDecimals(d.vault.asset?.decimals)) errors.push("Euler Borrow: invalid decimals");
-        }
         if (!d.collateralVault) {
-          errors.push("Euler Borrow: no collateral vault");
+          errors.push("Euler Borrow: no collateral vault selected");
+        } else {
+          if (!isValidAddr(d.collateralVault.address)) errors.push("Euler Borrow: invalid collateral vault address");
+          if (!isValidDecimals(d.collateralVault.asset?.decimals)) errors.push("Euler Borrow: invalid collateral decimals");
+        }
+        if (safeParseAmount(d.collateralAmount) <= 0) errors.push("Euler Borrow: no collateral amount");
+        if (!d.borrowVault) {
+          errors.push("Euler Borrow: no borrow vault selected");
+        } else {
+          if (!isValidAddr(d.borrowVault.address)) errors.push("Euler Borrow: invalid borrow vault address");
+          if (!isValidDecimals(d.borrowVault.asset?.decimals)) errors.push("Euler Borrow: invalid borrow decimals");
         }
         if (!d.borrowAmount || !isFinite(d.borrowAmount) || d.borrowAmount <= 0)
           errors.push("Euler Borrow: no borrow amount");

@@ -485,21 +485,35 @@ export default function CanvasPage() {
     [nodes, deleteNode, undo, redo]
   );
 
-  // Global Ctrl+Z / Ctrl+Shift+Z listener
+  // Global keyboard listener for Ctrl+Z / Ctrl+Shift+Z and Delete/Backspace
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (!reactFlowWrapper.current?.contains(document.activeElement)) return;
+
+      const tag = (e.target as HTMLElement).tagName;
+      const inInput = tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA";
+
       if ((e.metaKey || e.ctrlKey) && ((e.shiftKey && e.key === "z") || e.key === "y")) {
         e.preventDefault();
         redo();
       } else if ((e.metaKey || e.ctrlKey) && e.key === "z") {
         e.preventDefault();
         undo();
+      } else if (!inInput && (e.key === "Delete" || e.key === "Backspace")) {
+        const selected = nodes.filter((n) => n.selected);
+        if (selected.length > 0) {
+          e.preventDefault();
+          selected.forEach((n) => {
+            if ((n.data as { type: string }).type !== "wallet") {
+              deleteNode(n.id);
+            }
+          });
+        }
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [undo, redo]);
+  }, [undo, redo, nodes, deleteNode]);
 
   // Close save/load dropdowns on outside click
   useEffect(() => {

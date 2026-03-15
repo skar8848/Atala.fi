@@ -40,9 +40,9 @@ function AtalaDepositNodeComponent({ id, data }: NodeProps) {
       return { upstreamAmount: String(sd.quoteOut ?? ""), upstreamSymbol: tokenOut?.symbol ?? "" };
     }
     if (sd.type === "eulerBorrow" || sd.type === "siloBorrow") {
-      const vault = sd.vault as { asset?: { symbol: string } } | null;
+      const borrowVault = sd.borrowVault as { asset?: { symbol: string } } | null;
       const pair = sd.pair as { token0?: { symbol: string }; token1?: { symbol: string } } | null;
-      let sym = vault?.asset?.symbol ?? "";
+      let sym = sd.type === "eulerBorrow" ? (borrowVault?.asset?.symbol ?? "") : "";
       if (sd.type === "siloBorrow" && pair) {
         const side = sd.side as 0 | 1 | undefined;
         sym = (side ?? 0) === 0 ? pair.token0?.symbol ?? "" : pair.token1?.symbol ?? "";

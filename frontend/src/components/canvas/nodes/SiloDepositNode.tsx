@@ -56,8 +56,8 @@ function SiloDepositNodeComponent({ id, data }: NodeProps) {
       return tokenOut?.address?.toLowerCase() ?? null;
     }
     if (sd.type === "eulerBorrow") {
-      const vault = sd.vault as { asset?: { address: string } } | null;
-      return vault?.asset?.address?.toLowerCase() ?? null;
+      const borrowVault = sd.borrowVault as { asset?: { address: string } } | null;
+      return borrowVault?.asset?.address?.toLowerCase() ?? null;
     }
     return null;
   }, [edges, allNodes, id]);

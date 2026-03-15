@@ -105,14 +105,13 @@ export interface EulerDepositNodeData {
 export interface EulerBorrowNodeData {
   [key: string]: unknown;
   type: "eulerBorrow";
-  vault: EulerVaultInfo | null;
-  /** Collateral vault (enabled via EVC) */
   collateralVault: EulerVaultInfo | null;
+  collateralAmount: string;
+  borrowVault: EulerVaultInfo | null;
   ltvPercent: number;
   borrowAmount: number;
   borrowAmountUsd: number;
   healthFactor: number | null;
-  depositAmountUsd: number;
 }
 
 export interface EulerWithdrawNodeData {
@@ -228,15 +227,16 @@ export type CanvasNode = Node<CanvasNodeData>;
 // =============================================
 
 export const VALID_CONNECTIONS: Record<string, string[]> = {
-  // Wallet can start: deposit, swap, or repay
+  // Wallet can start: deposit, swap, repay, or standalone borrow
   wallet: [
     "eulerDeposit", "siloDeposit", "atalaDeposit",
     "swap",
     "eulerRepay", "siloRepay",
+    "eulerBorrow",
   ],
 
-  // Euler deposit can lead to: borrow, or be a terminal yield position
-  eulerDeposit: ["eulerBorrow"],
+  // Euler deposit can lead to: borrow, swap (withdraw yield), or be terminal
+  eulerDeposit: ["eulerBorrow", "swap"],
 
   // Euler borrow output can go to: swap, deposit elsewhere, or repay
   eulerBorrow: [

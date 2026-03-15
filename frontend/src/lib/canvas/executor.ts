@@ -338,15 +338,53 @@ export function buildExecutionBundle(
       }
 
       case "eulerBorrow": {
-        if (!data.vault) break;
-        const vault = data.vault.address as `0x${string}`;
-        const amount = parseUnits(
-          String(data.borrowAmount || 0),
-          data.vault.asset.decimals
+        if (!data.collateralVault || !data.borrowVault) break;
+        const collVault = data.collateralVault.address as `0x${string}`;
+        const collAsset = data.collateralVault.asset.address as `0x${string}`;
+        const collAmount = parseUnits(
+          data.collateralAmount || "0",
+          data.collateralVault.asset.decimals
         );
-        if (amount <= 0n) break;
+        const borVault = data.borrowVault.address as `0x${string}`;
+        const borAmount = parseUnits(
+          String(data.borrowAmount || 0),
+          data.borrowVault.asset.decimals
+        );
+        if (collAmount <= 0n || borAmount <= 0n) break;
 
-        // EVC: enableController (vault where we borrow FROM)
+        // 1. Approve collateral token to collateral vault
+        approvals.push({
+          token: collAsset,
+          spender: collVault,
+          amount: collAmount,
+          symbol: data.collateralVault.asset.symbol,
+        });
+
+        // 2. EVC: enableCollateral (collateral vault)
+        eulerBatchItems.push({
+          targetContract: evc,
+          onBehalfOfAccount: user,
+          value: 0n,
+          data: encodeFunctionData({
+            abi: EVC_ABI,
+            functionName: "enableCollateral",
+            args: [user, collVault],
+          }),
+        });
+
+        // 3. Deposit into collateral vault
+        eulerBatchItems.push({
+          targetContract: collVault,
+          onBehalfOfAccount: user,
+          value: 0n,
+          data: encodeFunctionData({
+            abi: EULER_VAULT_ABI,
+            functionName: "deposit",
+            args: [collAmount, user],
+          }),
+        });
+
+        // 4. EVC: enableController (borrow vault)
         eulerBatchItems.push({
           targetContract: evc,
           onBehalfOfAccount: user,
@@ -354,19 +392,19 @@ export function buildExecutionBundle(
           data: encodeFunctionData({
             abi: EVC_ABI,
             functionName: "enableController",
-            args: [user, vault],
+            args: [user, borVault],
           }),
         });
 
-        // Borrow
+        // 5. Borrow from borrow vault
         eulerBatchItems.push({
-          targetContract: vault,
+          targetContract: borVault,
           onBehalfOfAccount: user,
           value: 0n,
           data: encodeFunctionData({
             abi: EULER_VAULT_ABI,
             functionName: "borrow",
-            args: [amount, user],
+            args: [borAmount, user],
           }),
         });
         break;

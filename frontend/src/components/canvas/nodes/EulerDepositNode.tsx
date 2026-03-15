@@ -63,13 +63,13 @@ function EulerDepositNodeComponent({ id, data }: NodeProps) {
         }
       } else if (sd.type === "eulerBorrow" || sd.type === "siloBorrow") {
         const borrowAmt = (sd.borrowAmount as number) ?? 0;
-        const vault = sd.vault as { asset?: TokenInfo | { address: string; symbol: string } } | null;
+        const borrowVault = sd.borrowVault as { asset?: TokenInfo | { address: string; symbol: string } } | null;
         const pair = sd.pair as { token0?: TokenInfo; token1?: TokenInfo } | null;
         const side = sd.side as 0 | 1 | undefined;
         let sym = "?";
         let addr: string | null = null;
-        if (sd.type === "eulerBorrow" && vault?.asset) {
-          const a = vault.asset as TokenInfo;
+        if (sd.type === "eulerBorrow" && borrowVault?.asset) {
+          const a = borrowVault.asset as TokenInfo;
           sym = a.symbol;
           addr = a.address?.toLowerCase() ?? null;
         } else if (sd.type === "siloBorrow" && pair) {

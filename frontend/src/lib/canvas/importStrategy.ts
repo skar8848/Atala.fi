@@ -86,13 +86,13 @@ export function buildStrategyFromPositions(
       position: { x: COL.borrow, y },
       data: {
         type: "eulerBorrow",
-        vault: pos.vault,
         collateralVault: pos.vault,
+        collateralAmount: "",
+        borrowVault: null,
         ltvPercent: 50,
         borrowAmount: borrowAmt,
         borrowAmountUsd: 0,
         healthFactor: null,
-        depositAmountUsd: 0,
       } as CanvasNodeData,
     });
 

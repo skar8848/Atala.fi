@@ -155,10 +155,10 @@ export default function ExecuteButton() {
           break;
         }
         case "eulerBorrow": {
-          if (!d.vault || !isFinite(d.borrowAmount) || d.borrowAmount <= 0) break;
+          if (!d.collateralVault || !d.borrowVault || !isFinite(d.borrowAmount) || d.borrowAmount <= 0) break;
           s.push({
-            label: `Borrow ${d.vault.asset.symbol} (Euler)`,
-            detail: `${fmtNum(d.borrowAmount, 6)} ${d.vault.asset.symbol}${fmtApy(d.vault.borrowAPY)}`,
+            label: `Deposit ${d.collateralVault.asset.symbol} + Borrow ${d.borrowVault.asset.symbol} (Euler)`,
+            detail: `${fmtNum(d.borrowAmount, 6)} ${d.borrowVault.asset.symbol}${fmtApy(d.borrowVault.borrowAPY)}`,
             type: "borrow",
           });
           break;

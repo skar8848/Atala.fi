@@ -149,9 +149,9 @@ export function useCanvasState() {
           break;
         case "eulerBorrow":
           data = {
-            type: "eulerBorrow", vault: null, collateralVault: null,
-            ltvPercent: 50, borrowAmount: 0, borrowAmountUsd: 0,
-            healthFactor: null, depositAmountUsd: 0,
+            type: "eulerBorrow", collateralVault: null, collateralAmount: "",
+            borrowVault: null, ltvPercent: 50, borrowAmount: 0,
+            borrowAmountUsd: 0, healthFactor: null,
           };
           break;
         case "eulerWithdraw":
