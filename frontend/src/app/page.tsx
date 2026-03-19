@@ -271,7 +271,7 @@ export default function LandingPage() {
           opacity: 0.7;
           transition: opacity 0.3s ease;
           position: relative;
-          cursor: default;
+          cursor: pointer;
         }
 
         .nav-docs:hover {
@@ -282,6 +282,7 @@ export default function LandingPage() {
         }
 
         .nav-docs .tooltip {
+          display: none;
           position: absolute;
           top: 100%;
           left: 50%;
@@ -725,7 +726,7 @@ export default function LandingPage() {
       <section id="section-hero" className="landing-section">
         {/* Landing nav bar */}
         <nav className="landing-nav" id="landing-nav">
-          <span className="nav-docs">Docs<span className="tooltip">Coming soon!</span></span>
+          <a href="/docs" className="nav-docs">Docs</a>
           <a href="/markets" className="btn-launch-nav">Launch App</a>
         </nav>
 

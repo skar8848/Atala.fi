@@ -6,8 +6,8 @@ out/
 /broadcast
 /broadcast/*/31337/
 
-# Docs
-docs/
+# Docs (Foundry auto-generated)
+/docs
 
 # Dotenv file
 .env
