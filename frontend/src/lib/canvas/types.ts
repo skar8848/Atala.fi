@@ -308,7 +308,7 @@ export const NODE_COLORS: Record<string, string> = {
   eulerWithdraw: "#f97316",
   eulerRepay: "#ef4444",
   siloDeposit: "#8b5cf6",
-  siloBorrow: "#06b6d4",
+  siloBorrow: "#BD0931",
   siloWithdraw: "#f59e0b",
   siloRepay: "#ef4444",
   swap: "#eab308",

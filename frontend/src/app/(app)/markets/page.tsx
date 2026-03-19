@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const PROTOCOL_TABS: { value: Protocol; label: string; color: string }[] = [
   { value: "all", label: "All Markets", color: "text-foreground" },
   { value: "silo", label: "Silo V2", color: "text-orange-400" },
-  { value: "euler", label: "Euler V2", color: "text-cyan-400" },
+  { value: "euler", label: "Euler V2", color: "text-atala" },
 ];
 
 export default function MarketsPage() {

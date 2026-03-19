@@ -131,7 +131,7 @@ export function RebalanceForm({
         <Button
           onClick={handleRebalance}
           disabled={exceedsIdle || isPending || isConfirming || deltas.every((d) => !d.delta.trim())}
-          className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+          className="w-full bg-atala hover:bg-atala/80 text-white"
         >
           {isPending ? (
             <>

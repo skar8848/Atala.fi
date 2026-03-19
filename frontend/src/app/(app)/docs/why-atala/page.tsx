@@ -101,7 +101,7 @@ export default function WhyAtalaPage() {
               key={item.title}
               className="flex gap-4 rounded-xl border border-border/40 bg-card/30 p-5"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-atala/10 text-atala">
                 {item.icon}
               </div>
               <div>
@@ -145,7 +145,7 @@ export default function WhyAtalaPage() {
         <Link href="/docs/protocols" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
           &larr; Protocols
         </Link>
-        <Link href="/docs/vaults" className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+        <Link href="/docs/vaults" className="text-sm text-atala hover:text-atala transition-colors">
           Atala Vaults &rarr;
         </Link>
       </div>

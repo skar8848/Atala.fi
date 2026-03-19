@@ -14,7 +14,7 @@ const SIDEBAR_NODES = DRAGGABLE_NODE_TYPES.map((n) => ({
 const PROTOCOL_COLORS: Record<string, string> = {
   euler: "#2973ff",
   silo: "#8b5cf6",
-  morpho: "#06b6d4",
+  morpho: "#BD0931",
   atala: "#a855f7",
 };
 import type { UnifiedMarket } from "@/hooks/useUnifiedMarkets";

@@ -20,7 +20,7 @@ const EVENTS_TO_FORWARD = [
 
 const darkPalette = {
   baseTheme: "dark",
-  primary: "#06b6d4",
+  primary: "#BD0931",
   background: "#0a0a0a",
   paper: "#171717",
   text: "#fafafa",

@@ -172,7 +172,7 @@ function SiloBorrowNodeComponent({ id, data }: NodeProps) {
               value={ltvPercent}
               onChange={(e) => handleLtvChange(parseFloat(e.target.value))}
               className="mt-1 w-full"
-              style={{ accentColor: "#06b6d4" }}
+              style={{ accentColor: "#BD0931" }}
             />
             <div className="mt-1.5 flex gap-1">
               {[25, 50, 75].map((pct) => {
@@ -184,7 +184,7 @@ function SiloBorrowNodeComponent({ id, data }: NodeProps) {
                     className="flex-1 rounded py-0.5 text-[10px] font-medium transition-colors"
                     style={{
                       backgroundColor: Math.abs(ltvPercent - clampedPct) < 0.5 ? "rgba(6,182,212,0.2)" : "rgba(255,255,255,0.05)",
-                      color: Math.abs(ltvPercent - clampedPct) < 0.5 ? "#06b6d4" : "#586878",
+                      color: Math.abs(ltvPercent - clampedPct) < 0.5 ? "#BD0931" : "#586878",
                     }}
                   >
                     {pct}%
@@ -196,7 +196,7 @@ function SiloBorrowNodeComponent({ id, data }: NodeProps) {
                 className="flex-1 rounded py-0.5 text-[10px] font-medium transition-colors"
                 style={{
                   backgroundColor: Math.abs(ltvPercent - maxLtv) < 0.5 ? "rgba(6,182,212,0.2)" : "rgba(255,255,255,0.05)",
-                  color: Math.abs(ltvPercent - maxLtv) < 0.5 ? "#06b6d4" : "#586878",
+                  color: Math.abs(ltvPercent - maxLtv) < 0.5 ? "#BD0931" : "#586878",
                 }}
               >
                 Max
@@ -246,13 +246,13 @@ function SiloBorrowNodeComponent({ id, data }: NodeProps) {
         type="target"
         position={Position.Left}
         className="!h-3 !w-3 !rounded-full !border-2"
-        style={{ borderColor: "#06b6d4", backgroundColor: "#0c1218" }}
+        style={{ borderColor: "#BD0931", backgroundColor: "#0c1218" }}
       />
       <Handle
         type="source"
         position={Position.Right}
         className="!h-3 !w-3 !rounded-full !border-2"
-        style={{ borderColor: "#06b6d4", backgroundColor: "#0c1218" }}
+        style={{ borderColor: "#BD0931", backgroundColor: "#0c1218" }}
       />
     </NodeShell>
   );

@@ -69,7 +69,7 @@ export function RoleManager({ vaultAddress, roles, isOwner }: RoleManagerProps) 
                 size="xs"
                 onClick={() => handleSave(fn)}
                 disabled={!isValidAddress(inputValue) || isPending || isConfirming}
-                className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                className="bg-atala hover:bg-atala/80 text-white"
               >
                 {isPending || isConfirming ? <Spinner className="size-3" /> : "Save"}
               </Button>

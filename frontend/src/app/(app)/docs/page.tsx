@@ -58,8 +58,8 @@ export default function DocsOverview() {
         <div className="rounded-xl border border-border/40 bg-card/50 p-6 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
           <p>
             <span className="text-foreground font-medium">Atala</span> is a unified interface for DeFi lending on Avalanche C-Chain.
-            It aggregates lending markets from <span className="text-cyan-400">Euler V2</span> (61 vaults)
-            and <span className="text-cyan-400">Silo V2</span> (37 isolated markets) into a single dashboard.
+            It aggregates lending markets from <span className="text-atala">Euler V2</span> (61 vaults)
+            and <span className="text-atala">Silo V2</span> (37 isolated markets) into a single dashboard.
           </p>
           <p>
             Browse, compare, and interact with all lending markets in one place. Track your portfolio across
@@ -76,10 +76,10 @@ export default function DocsOverview() {
             <Link
               key={card.href}
               href={card.href}
-              className="group rounded-xl border border-border/40 bg-card/30 p-5 transition-all hover:border-cyan-500/30 hover:bg-card/60"
+              className="group rounded-xl border border-border/40 bg-card/30 p-5 transition-all hover:border-atala/30 hover:bg-card/60"
             >
               <div className="flex items-center gap-3 mb-2.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400 transition-colors group-hover:bg-cyan-500/20">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-atala/10 text-atala transition-colors group-hover:bg-atala/20">
                   {card.icon}
                 </div>
                 <h3 className="font-semibold text-foreground">{card.title}</h3>

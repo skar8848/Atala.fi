@@ -193,9 +193,9 @@ export function AddSubVaultDrawer({
                   <button
                     key={v.address}
                     onClick={() => setSelectedAddress(v.address)}
-                    className={`w-full flex items-center justify-between rounded-lg border p-3 text-left transition-all hover:border-cyan-500/50 ${
+                    className={`w-full flex items-center justify-between rounded-lg border p-3 text-left transition-all hover:border-atala/50 ${
                       selectedAddress === v.address
-                        ? "border-cyan-500 bg-cyan-500/10"
+                        ? "border-atala bg-atala/10"
                         : "border-border/40"
                     }`}
                   >
@@ -236,9 +236,9 @@ export function AddSubVaultDrawer({
                   <button
                     key={s.address}
                     onClick={() => setSelectedAddress(s.address)}
-                    className={`w-full flex items-center justify-between rounded-lg border p-3 text-left transition-all hover:border-cyan-500/50 ${
+                    className={`w-full flex items-center justify-between rounded-lg border p-3 text-left transition-all hover:border-atala/50 ${
                       selectedAddress === s.address
-                        ? "border-cyan-500 bg-cyan-500/10"
+                        ? "border-atala bg-atala/10"
                         : "border-border/40"
                     }`}
                   >
@@ -288,7 +288,7 @@ export function AddSubVaultDrawer({
           <Button
             onClick={handleAdd}
             disabled={!selectedAddress || !capInput.trim() || isPending || isConfirming}
-            className="bg-cyan-500 hover:bg-cyan-600 text-white"
+            className="bg-atala hover:bg-atala/80 text-white"
           >
             {isPending || isConfirming ? (
               <>

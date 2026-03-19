@@ -94,7 +94,7 @@ export const TOKEN_COLORS: Record<string, string> = {
   xUSD: "bg-lime-500",
   xBTC: "bg-lime-600",
   savBTC: "bg-amber-700",
-  reUSD: "bg-cyan-600",
+  reUSD: "bg-atala",
   yUSD: "bg-yellow-500",
   yUTY: "bg-yellow-600",
   tAVAX: "bg-red-600",
@@ -104,7 +104,7 @@ export const TOKEN_COLORS: Record<string, string> = {
   sUSDp: "bg-green-500",
   sYUSD: "bg-yellow-700",
   weETH: "bg-purple-400",
-  UTY: "bg-cyan-600",
+  UTY: "bg-atala",
   upAUSD: "bg-violet-400",
   upAVAX: "bg-red-400",
   "PT-USDe": "bg-sky-600",
@@ -155,7 +155,7 @@ function ExternalAddressLink({ address, label }: { address: string; label?: stri
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="text-[10px] text-muted-foreground hover:text-cyan-400 transition-colors font-mono"
+      className="text-[10px] text-muted-foreground hover:text-atala transition-colors font-mono"
       title={address}
     >
       {label ?? shortenAddress(address)}
@@ -164,7 +164,7 @@ function ExternalAddressLink({ address, label }: { address: string; label?: stri
 }
 
 const PROTOCOL_BADGE_STYLES: Record<string, { border: string; text: string; label: string }> = {
-  euler: { border: "border-cyan-500/40", text: "text-cyan-400", label: "Euler" },
+  euler: { border: "border-atala/40", text: "text-atala", label: "Euler" },
   silo: { border: "border-orange-500/40", text: "text-orange-400", label: "Silo" },
 };
 
@@ -391,7 +391,7 @@ export function VaultTable({ markets, isLoading }: VaultTableProps) {
                           width: `${Math.min(market.utilization, 100)}%`,
                           backgroundColor:
                             market.protocol === "euler"
-                              ? "#22d3ee"
+                              ? "#BD0931"
                               : market.protocol === "silo"
                                 ? "#f97316"
                                 : "#3b82f6",

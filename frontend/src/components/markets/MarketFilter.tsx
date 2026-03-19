@@ -86,7 +86,7 @@ export function MarketFilter({
               className={cn(
                 "rounded-md px-2 py-1 text-[11px] font-medium transition-all",
                 searchMode === mode.value
-                  ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
+                  ? "bg-atala/20 text-atala border border-atala/30"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-transparent"
               )}
             >
@@ -126,7 +126,7 @@ export function MarketFilter({
           className={cn(
             "cursor-pointer text-xs transition-colors h-7 px-2.5",
             selectedAsset === null
-              ? "bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 border-cyan-500/30"
+              ? "bg-atala/20 text-atala hover:bg-atala/30 border-atala/30"
               : "hover:bg-accent"
           )}
           onClick={() => onAssetChange(null)}
@@ -142,7 +142,7 @@ export function MarketFilter({
             className={cn(
               "flex items-center gap-1.5 rounded-full px-1.5 py-0.5 transition-all border",
               selectedAsset === asset.symbol
-                ? "border-cyan-500/50 bg-cyan-500/10"
+                ? "border-atala/50 bg-atala/10"
                 : "border-transparent hover:border-border/50 hover:bg-accent/50"
             )}
           >
@@ -164,7 +164,7 @@ export function MarketFilter({
                     onClick={() => onAssetChange(selectedAsset === asset.symbol ? null : asset.symbol)}
                     className={cn(
                       "relative rounded-full ring-2 ring-background transition-transform hover:scale-110 hover:z-10",
-                      selectedAsset === asset.symbol && "ring-cyan-500/50"
+                      selectedAsset === asset.symbol && "ring-atala/50"
                     )}
                     style={{ zIndex: 3 - idx }}
                     title={`${asset.symbol} (${asset.count})`}
@@ -191,7 +191,7 @@ export function MarketFilter({
                     className={cn(
                       "flex items-center gap-1 rounded-full px-1.5 py-0.5 transition-all border",
                       selectedAsset === asset.symbol
-                        ? "border-cyan-500/50 bg-cyan-500/10"
+                        ? "border-atala/50 bg-atala/10"
                         : "border-transparent hover:border-border/50 hover:bg-accent/50"
                     )}
                     title={`${asset.symbol} (${asset.count})`}

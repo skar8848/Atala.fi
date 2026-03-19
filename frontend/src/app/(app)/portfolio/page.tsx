@@ -135,7 +135,7 @@ export default function PortfolioPage() {
           ) : supplyPositions.length === 0 ? (
             <p className="text-sm text-muted-foreground py-8 text-center">
               No supply positions found.{" "}
-              <a href="/markets" className="text-cyan-400 hover:underline">
+              <a href="/markets" className="text-atala hover:underline">
                 Explore markets
               </a>
             </p>

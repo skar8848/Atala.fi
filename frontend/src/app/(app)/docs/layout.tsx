@@ -57,7 +57,7 @@ export default function DocsLayout({
                       className={cn(
                         "block rounded-md px-2.5 py-1.5 text-sm transition-colors",
                         pathname === item.href
-                          ? "bg-cyan-500/10 text-cyan-400 font-medium"
+                          ? "bg-atala/10 text-atala font-medium"
                           : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                       )}
                     >
@@ -81,7 +81,7 @@ export default function DocsLayout({
               className={cn(
                 "shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
                 pathname === item.href
-                  ? "bg-cyan-500/10 text-cyan-400"
+                  ? "bg-atala/10 text-atala"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >

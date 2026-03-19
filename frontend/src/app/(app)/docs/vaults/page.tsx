@@ -15,7 +15,7 @@ export default function VaultsPage() {
         <h2 className="text-xl font-semibold">Overview</h2>
         <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground">
           <p>
-            Atala Vaults are <span className="text-cyan-400">ERC-4626</span> compliant aggregator vaults that
+            Atala Vaults are <span className="text-atala">ERC-4626</span> compliant aggregator vaults that
             allocate deposits across multiple Euler V2 sub-vaults. Instead of manually moving funds between
             markets, you deploy a vault that does it for you — under parameters you define.
           </p>
@@ -57,7 +57,7 @@ export default function VaultsPage() {
             },
           ].map((item) => (
             <div key={item.step} className="flex gap-4 rounded-xl border border-border/40 bg-card/30 p-5">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-atala/10 text-atala text-sm font-bold">
                 {item.step}
               </div>
               <div>
@@ -79,7 +79,7 @@ export default function VaultsPage() {
         <div className="space-y-3">
           <div className="rounded-xl border border-border/40 bg-card/50 p-5 space-y-2">
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-cyan-400" />
+              <div className="h-2 w-2 rounded-full bg-atala" />
               <h3 className="font-semibold text-foreground">Owner</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -129,12 +129,12 @@ export default function VaultsPage() {
         <h2 className="text-xl font-semibold">Rebalancing Agent</h2>
         <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground">
           <p>
-            The <span className="text-cyan-400">AtalaAgent</span> is a keeper-pattern contract that automates
+            The <span className="text-atala">AtalaAgent</span> is a keeper-pattern contract that automates
             rebalancing for your vault. It registers as an EVC account operator on your vault and can move
             funds between sub-vaults based on yield optimization logic.
           </p>
 
-          <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
+          <div className="rounded-xl border border-atala/20 bg-atala/5 p-5 space-y-2">
             <h3 className="font-medium text-foreground">How it works</h3>
             <ol className="list-decimal list-inside space-y-1.5 text-sm">
               <li>The vault owner deploys an AtalaAgent and grants it the <span className="text-amber-400">Allocator</span> role.</li>
@@ -156,7 +156,7 @@ export default function VaultsPage() {
         <Link href="/docs/why-atala" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
           &larr; Why Atala
         </Link>
-        <Link href="/docs/contracts" className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+        <Link href="/docs/contracts" className="text-sm text-atala hover:text-atala transition-colors">
           Smart Contracts &rarr;
         </Link>
       </div>

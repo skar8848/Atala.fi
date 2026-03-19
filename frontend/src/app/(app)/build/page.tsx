@@ -46,7 +46,7 @@ export default function BuildPage() {
         </div>
         <Link
           href="/build/create"
-          className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg bg-atala hover:bg-atala/80 px-4 py-2 text-sm font-medium text-white transition-colors"
         >
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M8 3v10M3 8h10" />
@@ -77,7 +77,7 @@ export default function BuildPage() {
             </div>
             <Link
               href="/build/create"
-              className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition-colors"
+              className="inline-flex items-center gap-2 rounded-lg bg-atala hover:bg-atala/80 px-4 py-2 text-sm font-medium text-white transition-colors"
             >
               Create Your First Vault
             </Link>

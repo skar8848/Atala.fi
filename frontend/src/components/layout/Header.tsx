@@ -61,7 +61,6 @@ function NetworkSelector({
   const isSupportedChain = SUPPORTED_CHAINS.includes(currentChainId as typeof SUPPORTED_CHAINS[number]);
 
   if (!isSupportedChain) {
-    // Wrong network — not Avalanche nor Fuji
     return (
       <button
         onClick={() => onSwitch(avalanche.id)}
@@ -165,19 +164,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <a href="/markets" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500">
+      <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center px-6">
+        {/* Logo — left */}
+        <a href="/markets" className="flex items-center gap-2 justify-self-start">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-atala">
             <span className="text-sm font-bold text-white">A</span>
           </div>
           <span className="text-lg font-semibold tracking-tight">Atala</span>
-          <span className="rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs text-cyan-400">
+          <span className="rounded-full bg-atala/10 px-2 py-0.5 text-xs text-atala">
             Beta
           </span>
         </a>
 
-        {/* Navigation */}
+        {/* Navigation — centered */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <a
@@ -196,68 +195,67 @@ export function Header() {
           <MoreDropdown pathname={pathname} />
         </nav>
 
-        {/* Wallet + Network */}
-        <ConnectButton.Custom>
-          {({
-            account,
-            chain,
-            openAccountModal,
-            openConnectModal,
-            mounted,
-          }) => {
-            const connected = mounted && account && chain;
+        {/* Wallet + Network — right */}
+        <div className="justify-self-end">
+          <ConnectButton.Custom>
+            {({
+              account,
+              chain,
+              openAccountModal,
+              openConnectModal,
+              mounted,
+            }) => {
+              const connected = mounted && account && chain;
 
-            if (!mounted) {
+              if (!mounted) {
+                return (
+                  <div className="flex items-center gap-2">
+                    <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
+                      <AvaxLogo />
+                      Avalanche
+                    </div>
+                    <div className="h-9 w-28 rounded-lg bg-muted animate-pulse" />
+                  </div>
+                );
+              }
+
+              if (!connected) {
+                return (
+                  <div className="flex items-center gap-2">
+                    <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
+                      <AvaxLogo />
+                      Avalanche
+                    </div>
+                    <button
+                      onClick={openConnectModal}
+                      className="rounded-lg bg-atala hover:bg-atala/80 px-4 py-2 text-sm font-medium text-white transition-colors"
+                    >
+                      Connect Wallet
+                    </button>
+                  </div>
+                );
+              }
+
               return (
                 <div className="flex items-center gap-2">
-                  <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
-                    <AvaxLogo />
-                    Avalanche
-                  </div>
-                  <div className="h-9 w-28 rounded-lg bg-muted animate-pulse" />
-                </div>
-              );
-            }
-
-            if (!connected) {
-              return (
-                <div className="flex items-center gap-2">
-                  <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-muted-foreground">
-                    <AvaxLogo />
-                    Avalanche
-                  </div>
+                  <NetworkSelector
+                    currentChainId={chain.id}
+                    onSwitch={(chainId) => switchChain({ chainId })}
+                  />
                   <button
-                    onClick={openConnectModal}
-                    className="rounded-lg bg-cyan-500 hover:bg-cyan-600 px-4 py-2 text-sm font-medium text-white transition-colors"
+                    onClick={openAccountModal}
+                    className="flex items-center gap-2 rounded-lg border border-border/50 bg-muted/50 hover:bg-muted px-3 py-1.5 transition-colors"
                   >
-                    Connect Wallet
+                    <AddressAvatar address={account.address} />
+                    <span className="text-sm font-mono">
+                      {account.address.slice(0, 6)}...{account.address.slice(-4)}
+                    </span>
                   </button>
                 </div>
               );
-            }
-
-            return (
-              <div className="flex items-center gap-2">
-                {/* Chain selector: Mainnet / Fuji toggle */}
-                <NetworkSelector
-                  currentChainId={chain.id}
-                  onSwitch={(chainId) => switchChain({ chainId })}
-                />
-
-                {/* Account button: avatar + truncated address */}
-                <button
-                  onClick={openAccountModal}
-                  className="flex items-center gap-2 rounded-lg border border-border/50 bg-muted/50 hover:bg-muted px-3 py-1.5 transition-colors"
-                >
-                  <AddressAvatar address={account.address} />
-                  <span className="text-sm font-mono">
-                    {account.address.slice(0, 6)}...{account.address.slice(-4)}
-                  </span>
-                </button>
-              </div>
-            );
-          }}
-        </ConnectButton.Custom>
+            }}
+          </ConnectButton.Custom>
+        </div>
       </div>
     </header>
   );

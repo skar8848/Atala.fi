@@ -99,7 +99,7 @@ export default function VaultManagementPage() {
             <p className="text-sm text-muted-foreground">
               Vault not found or unable to read contract data
             </p>
-            <Link href="/build" className="text-cyan-400 hover:underline text-sm">
+            <Link href="/build" className="text-atala hover:underline text-sm">
               Back to Build
             </Link>
           </CardContent>
@@ -271,7 +271,7 @@ export default function VaultManagementPage() {
                   size="sm"
                   onClick={saveSupplyQueue}
                   disabled={setSupplyQueueWrite.isPending || setSupplyQueueWrite.isConfirming}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                  className="bg-atala hover:bg-atala/80 text-white"
                 >
                   {setSupplyQueueWrite.isPending || setSupplyQueueWrite.isConfirming ? (
                     <><Spinner className="mr-1 size-3" />Saving...</>
@@ -323,7 +323,7 @@ export default function VaultManagementPage() {
                   size="sm"
                   onClick={saveWithdrawQueue}
                   disabled={setWithdrawQueueWrite.isPending || setWithdrawQueueWrite.isConfirming}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                  className="bg-atala hover:bg-atala/80 text-white"
                 >
                   {setWithdrawQueueWrite.isPending || setWithdrawQueueWrite.isConfirming ? (
                     <><Spinner className="mr-1 size-3" />Saving...</>

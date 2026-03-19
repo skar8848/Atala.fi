@@ -109,7 +109,7 @@ export function SubVaultList({
                         size="xs"
                         onClick={() => handleSetCap(sv.address)}
                         disabled={setCap.isPending || setCap.isConfirming}
-                        className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                        className="bg-atala hover:bg-atala/80 text-white"
                       >
                         {setCap.isPending || setCap.isConfirming ? <Spinner className="size-3" /> : "Set"}
                       </Button>

@@ -16,13 +16,13 @@ import { Bar, BarChart, XAxis, YAxis, Cell, Pie, PieChart } from "recharts";
 import { formatPercent, formatUSD } from "@/lib/format";
 
 const COLORS = [
-  "#22d3ee",
+  "#BD0931",
   "#10b981",
   "#f59e0b",
   "#8b5cf6",
   "#ec4899",
   "#ef4444",
-  "#06b6d4",
+  "#BD0931",
   "#84cc16",
 ];
 
@@ -123,7 +123,7 @@ export default function AnalyticsPage() {
     ].filter((d) => d.tvl > 0);
   }, [markets]);
 
-  const PROTOCOL_COLORS = ["#f97316", "#22d3ee"];
+  const PROTOCOL_COLORS = ["#f97316", "#BD0931"];
 
   // Top markets by supply APY — cap at 500% to filter outliers
   const topAPYMarkets = useMemo(() => {
@@ -168,7 +168,7 @@ export default function AnalyticsPage() {
   }, [markets]);
 
   const tvlChartConfig: ChartConfig = {
-    tvl: { label: "TVL (USD)", color: "#22d3ee" },
+    tvl: { label: "TVL (USD)", color: "#BD0931" },
   };
 
   const apyChartConfig: ChartConfig = {
@@ -220,7 +220,7 @@ export default function AnalyticsPage() {
         </Badge>
         <Badge
           variant="outline"
-          className="text-xs border-cyan-500/40 text-cyan-400"
+          className="text-xs border-atala/40 text-atala"
         >
           {eulerCount} Euler V2
         </Badge>
@@ -480,7 +480,7 @@ export default function AnalyticsPage() {
                         variant="outline"
                         className={`text-[9px] px-1 py-0 ${
                           m.protocol === "euler"
-                            ? "border-cyan-500/40 text-cyan-400"
+                            ? "border-atala/40 text-atala"
                             : "border-orange-500/40 text-orange-400"
                         }`}
                       >

@@ -13,8 +13,8 @@ export default function ProtocolsPage() {
       {/* Euler V2 */}
       <section className="space-y-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10">
-            <span className="text-sm font-bold text-cyan-400">E</span>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-atala/10">
+            <span className="text-sm font-bold text-atala">E</span>
           </div>
           <h2 className="text-2xl font-semibold">Euler V2</h2>
         </div>
@@ -22,8 +22,8 @@ export default function ProtocolsPage() {
         <div className="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
           <p>
             <span className="text-foreground font-medium">Euler V2</span> is a modular lending protocol built on two core primitives:
-            the <span className="text-cyan-400">Ethereum Vault Connector (EVC)</span> and the
-            <span className="text-cyan-400"> Euler Vault Kit (EVK)</span>.
+            the <span className="text-atala">Ethereum Vault Connector (EVC)</span> and the
+            <span className="text-atala"> Euler Vault Kit (EVK)</span>.
           </p>
 
           <div className="rounded-xl border border-border/40 bg-card/50 p-5 space-y-3">
@@ -126,11 +126,11 @@ export default function ProtocolsPage() {
       </section>
 
       {/* How Atala unifies them */}
-      <section className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-6 space-y-3">
+      <section className="rounded-xl border border-atala/20 bg-atala/5 p-6 space-y-3">
         <h3 className="text-lg font-semibold text-foreground">How Atala unifies them</h3>
         <p className="text-[15px] leading-relaxed text-muted-foreground">
           Both protocols use different architectures, ABIs, and data models. Atala normalizes everything
-          into a <span className="text-cyan-400">UnifiedMarket</span> type — a common schema for asset,
+          into a <span className="text-atala">UnifiedMarket</span> type — a common schema for asset,
           supply APY, borrow APY, TVL, utilization, and protocol source. This lets you compare markets
           across Euler V2 and Silo V2 in a single table, sort by yield, and find the best rates instantly.
         </p>
@@ -141,7 +141,7 @@ export default function ProtocolsPage() {
         <Link href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
           &larr; Overview
         </Link>
-        <Link href="/docs/why-atala" className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+        <Link href="/docs/why-atala" className="text-sm text-atala hover:text-atala transition-colors">
           Why Atala &rarr;
         </Link>
       </div>

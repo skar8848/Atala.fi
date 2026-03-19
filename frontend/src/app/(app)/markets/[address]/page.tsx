@@ -162,7 +162,7 @@ export default function VaultDetailPage() {
               <div className="flex items-center gap-3">
                 <div className="h-2 w-24 rounded-full bg-muted overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-cyan-400 transition-all"
+                    className="h-full rounded-full bg-atala transition-all"
                     style={{ width: `${Math.min(utilization, 100)}%` }}
                   />
                 </div>

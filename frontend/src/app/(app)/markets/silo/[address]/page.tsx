@@ -154,7 +154,7 @@ export default function SiloMarketDetailPage() {
         </p>
         <Link
           href="/markets"
-          className="mt-4 text-sm text-cyan-400 hover:underline"
+          className="mt-4 text-sm text-atala hover:underline"
         >
           Back to Markets
         </Link>
@@ -428,7 +428,7 @@ function AddressRow({
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="text-xs font-mono text-cyan-400 hover:underline"
+            className="text-xs font-mono text-atala hover:underline"
           >
             {shortenAddress(address)}
           </a>

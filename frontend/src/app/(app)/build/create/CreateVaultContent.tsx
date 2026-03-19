@@ -165,7 +165,7 @@ export default function CreateVaultContent() {
               href={getExplorerUrl(chainId, hash)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors"
+              className="text-sm text-atala hover:text-atala underline underline-offset-2 transition-colors"
             >
               View transaction on Explorer
             </a>
@@ -174,7 +174,7 @@ export default function CreateVaultContent() {
                 <Link href="/build">Back to Build</Link>
               </Button>
               <Button
-                className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                className="bg-atala hover:bg-atala/80 text-white"
                 asChild
               >
                 <Link href={`/build/${newVaultAddress}`}>
@@ -210,7 +210,7 @@ export default function CreateVaultContent() {
               href={getExplorerUrl(chainId, hash)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors"
+              className="text-sm text-atala hover:text-atala underline underline-offset-2 transition-colors"
             >
               View transaction on Explorer
             </a>
@@ -276,7 +276,7 @@ export default function CreateVaultContent() {
                     href={getExplorerUrl(chainId, factoryDeployHash)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors"
+                    className="text-xs text-atala hover:text-atala underline underline-offset-2 transition-colors"
                   >
                     View deploy tx on Explorer
                   </a>
@@ -322,7 +322,7 @@ export default function CreateVaultContent() {
                 <Button
                   onClick={deployFactory}
                   disabled={isFactoryPending || isFactoryConfirming}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white w-full"
+                  className="bg-atala hover:bg-atala/80 text-white w-full"
                 >
                   {isFactoryPending ? (
                     <>
@@ -353,7 +353,7 @@ export default function CreateVaultContent() {
               <div
                 key={s}
                 className={`h-1.5 flex-1 rounded-full transition-colors ${
-                  s <= step ? "bg-cyan-500" : "bg-muted"
+                  s <= step ? "bg-atala" : "bg-muted"
                 }`}
               />
             ))}
@@ -366,7 +366,7 @@ export default function CreateVaultContent() {
               href={getExplorerAddressUrl(chainId, effectiveFactory!)}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-cyan-400/70 hover:text-cyan-400 transition-colors"
+              className="font-mono text-atala/70 hover:text-atala transition-colors"
             >
               {effectiveFactory!.slice(0, 6)}...{effectiveFactory!.slice(-4)}
             </a>
@@ -387,9 +387,9 @@ export default function CreateVaultContent() {
                     <button
                       key={asset.address}
                       onClick={() => handleSelectAsset(asset)}
-                      className={`flex items-center gap-3 rounded-lg border p-3 text-left transition-all hover:border-cyan-500/50 hover:bg-cyan-500/5 ${
+                      className={`flex items-center gap-3 rounded-lg border p-3 text-left transition-all hover:border-atala/50 hover:bg-atala/5 ${
                         selectedAsset?.address === asset.address
-                          ? "border-cyan-500 bg-cyan-500/10"
+                          ? "border-atala bg-atala/10"
                           : "border-border/40"
                       }`}
                     >
@@ -448,7 +448,7 @@ export default function CreateVaultContent() {
                   <Button
                     onClick={() => setStep(3)}
                     disabled={!vaultName.trim() || !vaultSymbol.trim()}
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                    className="bg-atala hover:bg-atala/80 text-white"
                   >
                     Review
                   </Button>
@@ -497,7 +497,7 @@ export default function CreateVaultContent() {
                       href={getExplorerAddressUrl(chainId, effectiveFactory!)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-mono text-cyan-400/70 hover:text-cyan-400 transition-colors"
+                      className="text-xs font-mono text-atala/70 hover:text-atala transition-colors"
                     >
                       {effectiveFactory!.slice(0, 6)}...{effectiveFactory!.slice(-4)}
                     </a>
@@ -525,7 +525,7 @@ export default function CreateVaultContent() {
                   <Button
                     onClick={handleDeploy}
                     disabled={isPending || isConfirming}
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white flex-1"
+                    className="bg-atala hover:bg-atala/80 text-white flex-1"
                   >
                     {isPending ? (
                       <>
