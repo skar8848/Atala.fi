@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSwitchChain } from "wagmi";
@@ -8,13 +9,15 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/markets", label: "Markets" },
-  { href: "/visualize", label: "Canvas" },
-  { href: "/address", label: "Address" },
   { href: "/swap", label: "Swap" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/analytics", label: "Analytics" },
   { href: "/build", label: "Build" },
-  { href: "/visualize", label: "Visualize" },
+  { href: "/visualize", label: "Canvas" },
+];
+
+const MORE_ITEMS = [
+  { href: "/analytics", label: "Analytics" },
+  { href: "/address", label: "Address" },
 ];
 
 const SUPPORTED_CHAINS = [avalanche.id, avalancheFuji.id] as const;
@@ -106,6 +109,56 @@ function NetworkSelector({
   );
 }
 
+function MoreDropdown({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const isMoreActive = MORE_ITEMS.some((item) => pathname === item.href);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+          isMoreActive
+            ? "bg-accent text-accent-foreground"
+            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+        )}
+      >
+        ...
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full mt-1 min-w-[140px] rounded-lg border border-border/40 bg-background/95 backdrop-blur-xl shadow-lg py-1 z-50">
+          {MORE_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className={cn(
+                "block px-3 py-2 text-sm font-medium transition-colors",
+                pathname === item.href
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function Header() {
   const pathname = usePathname();
   const { switchChain } = useSwitchChain();
@@ -140,6 +193,7 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          <MoreDropdown pathname={pathname} />
         </nav>
 
         {/* Wallet + Network */}
