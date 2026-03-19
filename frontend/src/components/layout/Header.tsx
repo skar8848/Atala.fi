@@ -15,7 +15,6 @@ const NAV_ITEMS = [
   { href: "/analytics", label: "Analytics" },
   { href: "/build", label: "Build" },
   { href: "/visualize", label: "Visualize" },
-  { href: "/docs", label: "Docs" },
 ];
 
 const SUPPORTED_CHAINS = [avalanche.id, avalancheFuji.id] as const;
